@@ -7,7 +7,12 @@ import notFound from './middleware/not-found.js'
 import errorHandlerMiddleware from './middleware/error-handler.js'
 import start from './utils/start.js'
 import adminRouter from './routes/admin.js'
+import projectsRouter from './routes/projects.js'
+import cors from 'cors'
+
 const app = express()
+
+app.use(cors())
 
 // USE BODY PARSER
 app.use(express.json())
@@ -17,6 +22,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1/admin', adminRouter)
+app.use('/api/v1/projects', projectsRouter)
 
 // USE ERROR MIDDLEWARE
 app.use(errorHandlerMiddleware)

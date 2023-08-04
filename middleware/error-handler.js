@@ -6,6 +6,7 @@ const errorHandlerMiddleware = (err, req, res, next) => {
     statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
   }
 
+  // return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ err })
   res.status(customError.statusCode).json({ message: customError.message })
 }
 
