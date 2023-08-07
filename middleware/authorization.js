@@ -32,10 +32,6 @@ export const verifyCode = (req, res, next) => {
 
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET)
-    // console.log(
-    //   typeof req.body.verificationCode,
-    //   typeof payload.verificationCode
-    // )
     if (req.body.verificationCode !== payload.verificationCode) {
       throw new UnauthenticatedError('invalid or expired code')
     }
