@@ -1,17 +1,26 @@
 import nodemailer from 'nodemailer'
 
 const sendEmail = (receiver, subject, message) => {
+  // const transporter = nodemailer.createTransport({
+  //   service: 'gmail',
+  //   secure: false,
+  //   auth: {
+  //     user: 'app4bells@gmail.com',
+  //     pass: 'dktujwvuwvpfldrq',
+  //   },
+  // })
+
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    secure: false,
+    host: 'mail.bellsarena.com',
+    port: 465,
     auth: {
-      user: 'app4bells@gmail.com',
-      pass: 'dktujwvuwvpfldrq',
+      user: 'account@bellsarena.com',
+      pass: process.env.EMAIL_PASSWORD,
     },
   })
 
   const emailOptions = {
-    from: 'app4bells@gmail.com',
+    from: 'account@bellsarena.com',
     to: receiver,
     subject,
     html: message,
